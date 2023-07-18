@@ -26,14 +26,15 @@ app.get('/', function(req, res) {
 });
 
 app.get(['/facebook', '/instagram'], function(req, res) {
-  if (
-    req.query['hub.mode'] == 'subscribe' &&
-    req.query['hub.verify_token'] == token
-  ) {
-    res.send(req.query['hub.challenge']);
-  } else {
-    res.sendStatus(400);
-  }
+  res.send(req.query['hub.challenge']);
+  // if (
+  //   req.query['hub.mode'] == 'subscribe' &&
+  //   req.query['hub.verify_token'] == token
+  // ) {
+  //   res.send(req.query['hub.challenge']);
+  // } else {
+  //   res.sendStatus(400);
+  // }
 });
 
 app.post('/facebook', function(req, res) {
